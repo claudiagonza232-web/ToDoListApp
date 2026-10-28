@@ -2,7 +2,6 @@ To Do List App Project (HTML, CSS, JS)
 
 Build an interactive to-do list that helps users manage tasks, choose what to work on, and complete a timed focus session. 
 
-
 Project goals
 
 Practice semantic HTML, CSS styling, JavaScript events, arrays and objects, DOM updates, and countdown timers. 
