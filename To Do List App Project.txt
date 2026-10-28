@@ -1,0 +1,100 @@
+To Do List App Project (HTML, CSS, JS)
+
+Build an interactive to-do list that helps users manage tasks, choose what to work on, and complete a timed focus session. 
+
+
+Project goals
+
+Practice semantic HTML, CSS styling, JavaScript events, arrays and objects, DOM updates, and countdown timers. 
+Build the app with HTML, CSS, and vanilla JavaScript. No backend or framework is required.
+
+The following is the list of project requirements:
+
+
+1. Add, edit and delete tasks
+
+Provide a text input and an Add button. A task must have a nonempty title; reject blank or whitespace-only input with a helpful message.
+New tasks begin as active and use Low importance by default. Allow the user to choose Low, Medium, or High when adding a task.
+Append a new task to the end of its active importance group. This applies the basic append behavior while preserving automatic priority ordering.
+
+Let the user edit and save a task title or cancel the edit. Editing only the title must preserve its importance, completion status, and position.
+
+Let the user delete any task. If it is the Doing Now task, also stop its timer and clear the Doing Now selection.
+
+
+
+2. Complete and restore tasks
+
+A checkbox marks a task complete. Move it after all existing completed tasks at the bottom of the list, use gray text, and apply a strikethrough to its title.
+Active means not completed. Doing Now identifies one active task the user is currently working on. Completing the Doing Now task must also stop its timer and remove its highlight.
+
+Unchecking a completed task restores it to active status. Remove the strikethrough, return the title to black text, and place it last in its active importance group.
+
+
+
+
+3. Set task importance
+
+Every task has one importance value: High, Medium, or Low. Display that value with a visible text label; you may add color as a second cue.
+
+Show active tasks in this order: High first, then Medium, then Low. Show all completed tasks after all active tasks.
+Within each active importance group, preserve arrival order. A task enters the end of a group when it is added, restored, or changed to that importance.
+
+Changing importance moves an active task to the end of its new group. Selecting its existing importance must not reorder it.
+Completed tasks keep their importance for later restoration, but remain in completion order. If their importance changes, do not move them until they are restored.
+
+Ordering example
+
+Start with these active tasks: A (High), B (High), C (Medium), D (Low). Task E is already completed.
+
+Add F with High importance. The new list looks like this → A, B, F | C | D |  E .
+
+Change C to High. The new list looks like this → A, B, F, C | D |  E . Task C moved at the end of the High importance task group.
+
+Complete A → B, F, C | D |  E, A .
+
+Restore B → B, F, C, A | D |  E .
+
+
+
+
+4. Choose a Doing Now task
+
+Give each active task a Doing Now button. Only one task may be selected at a time.
+Visually highlight the selected task and display a Doing Now label. Keep its active title black and readable.
+
+Selecting another task removes the previous highlight.
+The highlight does not change list order or importance. Completed tasks cannot be selected as Doing Now.
+
+Provide a way to clear the selection. Clearing or switching the selection stops and resets any current countdown; the task remains active.
+For this project, timer progress does not transfer between tasks. A newly selected task receives a fresh countdown when the user starts it.
+
+
+
+5. Set and run a countdown
+
+Allow the user to choose a duration in increments of 10 minutes: 10, 20, 30, and so on. The minimum is 10 minutes, the maximum is 2 hours. A dropdown or plus and minus controls are acceptable.
+
+Display the selected Doing Now task and the remaining time in MM:SS format. The timer should have a start button. Disable Start when no active Doing Now task is selected.
+
+Start the countdown only when the user clicks Start. Prevent repeated clicks from creating multiple countdowns.
+
+Keep the duration fixed while the timer is running. Provide a Reset or Stop control that cancels the countdown and restores the selected duration without completing the task.
+
+At zero, stop the countdown, display 00:00, and ask: “Did you finish this task?” Provide clear Yes and No choices. Do not let the timer run below zero.
+
+When the user answers Yes, mark that task complete, move it after all existing completed tasks, apply gray text and strikethrough, and clear Doing Now. The timer must stop, and Start becomes disabled until another active task is selected.
+
+When the user answers No, keep the task active in the same position and retain its Doing Now highlight. Reset the display to the selected duration, but wait for the user to click Start before beginning another session.
+
+Keep the completion prompt consistent
+Show the prompt once per finished countdown. While it is open, require a Yes or No response before switching, deleting, or changing the completion status of the timed task. A custom dialog or the browser confirmation dialog is acceptable.
+
+
+Suggested build sequence
+
+1. Build the page and style sample active, completed, and Doing Now tasks.
+2. Implement add, edit, delete, complete, and restore.
+3. Implement importance groups and verify ordering.
+4. Add the Doing Now selection and countdown.
+5. Test edge cases and polish the interface.
