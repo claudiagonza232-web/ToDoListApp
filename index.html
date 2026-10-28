@@ -13,6 +13,8 @@
     <p>Keep track of your tasks and stay organized!</p>
 </header>
 <main>
+
+<!-- Adding a Task Section, where you can add priority to the tasks -->
     <section class="add-task">
         <h2>Add a New Task!</h2>
         <input type="text" id="new-task" placeholder="Add a new task...">
@@ -23,6 +25,14 @@
         </select>
         <button id="add-task">Add</button>      
     </section>
+    <!-- Here is going to be the task summary section -->
+    <section class="task-summary">
+        <h2>Task Summary</h2>
+        <p>Total Tasks: <span id="task-count">0</span></p>
+        <p>Doing Tasks: <span id="task-doing-count">0</span></p>
+        <p>Completed Tasks: <span id="task-completed-count">0</span></p>
+    </section> 
+
 </main>
 </main>
 </body>
