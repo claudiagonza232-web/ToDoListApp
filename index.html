@@ -39,7 +39,35 @@
     <button type="button" data-filter="medium">Medium</button>
     <button type="button" data-filter="high">High</button>
     </section>
+    <!-- Task Board--> 
+     <section class="task-board">
 
+        <div class="task-column">
+            <h2>To Do📝</h2>
+            <div id="todoList" class="task-list">
+            </div>
+        </div>
+        <div class="task-column">
+            <h2>Doing⏳</h2>
+            <div id="doingList" class="task-list">
+            </div>
+            <div class="timer">
+                <h3>Focus Timer</h3>
+                <p id="timer-display">00:00</p>
+                 <button type="button" id="startTimer">Start</button>
+                    <button type="button" id="pauseTimer">Pause</button>
+                    <button type="button" id="resetTimer">Reset</button>
+            </div>
+        </div>
+        <div class="task-column">
+            <h2>Completed✅</h2>
+            <div id="completedList" class="task-list">
+            </div>
+        </div>
+    </section>
 </main>
+<footer>
+    <p>My To-do list App💜</p>
+</footer>
 </body>
 </html>
