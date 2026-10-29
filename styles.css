@@ -110,11 +110,11 @@ button:disabled{
 }
 /* Priority Labels */
 .high{
-    color: #d9534f
+    color: #d9534f;
 }
 
 .medium {
-    color: #faea33;
+    color: #c78a16;
 }
 
 .low {
