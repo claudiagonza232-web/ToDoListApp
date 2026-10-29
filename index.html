@@ -25,49 +25,50 @@
         </select>
         <button id="add-task">Add</button>      
     </section>
+
     <!-- Here is going to be the task summary section -->
     <section class="task-summary">
         <h2>Task Summary</h2>
-        <p>Total Tasks: <span id="task-count">0</span></p>
+        <p>To Do Tasks: <span id="task-count">0</span></p>
         <p>Doing Tasks: <span id="task-doing-count">0</span></p>
         <p>Completed Tasks: <span id="task-completed-count">0</span></p>
     </section> 
     <!-- Filter Tasks -->
+     <h2>Filter by Priority</h2>
     <section class="filter-tasks">
     <button type="button" data-filter="all">All</button>
     <button type="button" data-filter="low">Low</button>
     <button type="button" data-filter="medium">Medium</button>
     <button type="button" data-filter="high">High</button>
     </section>
+
     <!-- Task Board--> 
      <section class="task-board">
+    <div class="task-column">
+        <h2>To Do 📝</h2>
+        <div id="todo-list"></div>
+    </div>
 
-        <div class="task-column">
-            <h2>To Do📝</h2>
-            <div id="todoList" class="task-list">
-            </div>
+    <div class="task-column">
+        <h2>Doing ⏳</h2>
+        <div id="doing-list"></div>
+
+        <div class="focus-timer">
+            <h3>Focus Timer ⏱️</h3>
+            <p id="timer-display">30:00</p>
+
+            <button id="start-timer">Start</button>
+            <button id="pause-timer">Pause</button>
+            <button id="reset-timer">Reset</button>
         </div>
-        <div class="task-column">
-            <h2>Doing⏳</h2>
-            <div id="doingList" class="task-list">
-            </div>
-            <div class="timer">
-                <h3>Focus Timer</h3>
-                <p id="timer-display">00:00</p>
-                 <button type="button" id="startTimer">Start</button>
-                    <button type="button" id="pauseTimer">Pause</button>
-                    <button type="button" id="resetTimer">Reset</button>
-            </div>
-        </div>
-        <div class="task-column">
-            <h2>Completed✅</h2>
-            <div id="completedList" class="task-list">
-            </div>
-        </div>
-    </section>
+    </div>
+
+    <div class="task-column">
+        <h2>Completed ✅</h2>
+        <div id="completed-list"></div>
+    </div>
+</section>
+
 </main>
-<footer>
-    <p>My To-do list App💜</p>
-</footer>
 </body>
 </html>
