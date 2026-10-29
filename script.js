@@ -2,7 +2,7 @@
 
 // Get HTML elements
 const taskInput = document.getElementById("new-task");
-const priorityInput = document.getElementById("priority");
+const priorityInput = document.getElementById("task-priority");
 const addTaskButton = document.getElementById("add-task");
 const taskList = document.getElementById("task-list");
 const taskError = document.getElementById("task-error");
@@ -64,4 +64,4 @@ function displayTasks(){
 }
 
 //add a button event 
-addButton.addEventListener("click",addTask);
+addTaskButton.addEventListener("click",addTask);
