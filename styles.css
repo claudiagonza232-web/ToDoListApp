@@ -18,3 +18,29 @@ main{
     padding: 20px;
 }
 
+/* Headings */
+header{
+    background-color: #e8d5fa;
+    text-align: center;
+    padding: 30px;
+}
+header h1{
+    color: #63358a;
+    font-family: 'Georgia', serif;
+}   
+
+/* Section */
+section{
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px #e5d9ee;
+}
+h2, h3{
+    color: #63358a;
+    margin-bottom: 15px;
+}
+
+
+
