@@ -149,3 +149,15 @@ button:disabled{
 .timer-buttons{
     margin-top: 15px;
 }
+/* Mobile friendly */
+@media (max-width: 600px) {
+    main{
+        padding: 10px;
+    }
+    .summary-container{
+        flex-direction: column;
+    }
+    .add-task input{
+        width: 100%;
+    }
+}
