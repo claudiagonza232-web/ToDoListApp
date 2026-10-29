@@ -95,3 +95,16 @@ button:disabled{
 .filter-tasks button{
     background-color: #b99ad9;
 }
+
+/* Task List */
+.task-list {
+    margin-top: 15px;
+}
+
+.task-item{
+    background-color: #f8f2ff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #e8d5fa;
+}
