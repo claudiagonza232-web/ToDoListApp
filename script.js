@@ -40,4 +40,26 @@ taskInput.value = "";
 priorityInput.value = "low";
 }
 
+// Display tasks
+function displayTasks(){
+    taskList.innerHTML = "";
+
+    //Sort by priority 
+    const priorityOrder = { "high": 1, "medium": 2, "low": 3 };
+    const sortedTasks = [...tasks].sort((a,b) => { 
+        return priorityOrder[a.priority] - priorityOrder[b.priority];
+    });
+
+    sortedTasks.forEach(task => {
+        const taskDiv = document.createElement("div");
+        taskDiv.className = "task-item";
+
+        taskDiv.innerHTML = `
+            <span class="task-title">${task.title}</span>
+            <span class="${task.priority}">${task.priority}</span>
+        `;
+        taskList.appendChild(taskDiv);
+    }); 
+    document.getElementById("todo-count").textContent = tasks.length;
+}
 
