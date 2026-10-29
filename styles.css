@@ -42,5 +42,32 @@ h2, h3{
     margin-bottom: 15px;
 }
 
-
-
+/* Inputs and Buttons */
+input, select, button{
+    padding: 10px;
+    border-radius: 7px;
+    font-size: 15px;
+    margin: 5px;
+}
+input, select{
+    border: 1px solid #d8c4ed;
+} 
+.add-task input{
+    width: 55%;
+}
+button{
+    background-color: #8b5ac0;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover:not(:disabled){
+    background-color: #7042a4;
+}
+button:disabled{
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+#task-error {
+ color: #c0395b;
+}
