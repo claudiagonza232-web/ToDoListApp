@@ -23,7 +23,10 @@
             <option value="medium">Medium</option>
             <option value="high">High</option>
         </select>
-        <button id="add-task">Add</button>      
+        <button id="add-task">Add</button>   
+
+        <!-- Error message for task input -->
+        <p id="task-error" role="alert"></p>
     </section>
 
     <!-- Here is going to be the task summary section -->
@@ -60,7 +63,7 @@
 <!-- Task Board -->
 <section class="task-board">
 <h2>My tasks 🗂️</h2>
-<div class="task-list">
+<div id="task-list" class="task-list">
     <!-- Tasks will be added here using javascript -->
 </div>
 
@@ -86,10 +89,13 @@
          <option value="120">120 minutes</option>
      </select>
 
-     <p id="timer-displays">30:00</p>
-     <button type="button" id="start-timer"disabled>Start</button>
+     <p id="timer-display">30:00</p>
+      <div class="timer-buttons">
+     <button type="button" id="start-timer" disabled>Start</button>
      <button type="button" id="pause-timer" disabled>Pause</button>
      <button type="button" id="reset-timer">Reset</button>
+     </div>
+</section>
 </main>
 </body>
 </html>
