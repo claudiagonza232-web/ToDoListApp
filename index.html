@@ -29,21 +29,37 @@
     <!-- Here is going to be the task summary section -->
     <section class="task-summary">
         <h2>Task Summary</h2>
-        <p>To Do Tasks: <span id="task-count">0</span></p>
-        <p>Doing Tasks: <span id="task-doing-count">0</span></p>
-        <p>Completed Tasks: <span id="task-completed-count">0</span></p>
+        <div class="summary-container">
+        <div class="summary-card">
+           <h3>To Do 📝</h3>
+           <p id="todo-count">0</p>
+           <p>Tasks</p>
+        </div>
+        <div class="summary-card">
+           <h3>Doing ⏳</h3>
+           <p id="doing-count">0</p>
+           <p>Tasks</p>
+        </div>
+        <div class="summary-card">
+           <h3>Completed ✅</h3>
+           <p id="completed-count">0</p>
+           <p>Tasks</p>
+        </div>
+        </div>
     </section> 
+
     <!-- Filter Tasks -->
-     <h2>Filter by Priority</h2>
     <section class="filter-tasks">
+        <h2>Filter by Priority</h2>
     <button type="button" data-filter="all">All</button>
     <button type="button" data-filter="low">Low</button>
     <button type="button" data-filter="medium">Medium</button>
     <button type="button" data-filter="high">High</button>
     </section>
+  
+<!-- Task Board -->
+<section class="task-board">
 
-    <!-- Task Board--> 
-     <section class="task-board">
     <div class="task-column">
         <h2>To Do 📝</h2>
         <div id="todo-list"></div>
@@ -52,23 +68,24 @@
     <div class="task-column">
         <h2>Doing ⏳</h2>
         <div id="doing-list"></div>
-
-        <div class="focus-timer">
-            <h3>Focus Timer ⏱️</h3>
-            <p id="timer-display">30:00</p>
-
-            <button id="start-timer">Start</button>
-            <button id="pause-timer">Pause</button>
-            <button id="reset-timer">Reset</button>
-        </div>
     </div>
 
     <div class="task-column">
         <h2>Completed ✅</h2>
         <div id="completed-list"></div>
     </div>
+
 </section>
 
+<!-- Focus Timer -->
+<section class="focus-timer">
+    <h3>Focus Timer ⏱️</h3>
+    <p id="timer-display">30:00</p>
+
+    <button type="button" id="start-timer">Start</button>
+    <button type="button" id="pause-timer">Pause</button>
+    <button type="button" id="reset-timer">Reset</button>
+</section>
 </main>
 </body>
 </html>
