@@ -71,3 +71,27 @@ button:disabled{
 #task-error {
  color: #c0395b;
 }
+
+/* Task Summary */
+.summary-container {
+    display: flex;
+    gap:15px;
+}
+
+.summary-card{
+    background-color: #f3e8ff;
+    padding: 20px;
+    text-align:center;
+    border-radius: 10px;
+    flex: 1;
+}
+.summary-card p[id] {
+    font-size:30px;
+    font-weight: bold;
+    color: #8b5ac0;
+}
+
+/* Priority Filters */
+.filter-tasks button{
+    background-color: #b99ad9;
+}
