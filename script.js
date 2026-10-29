@@ -63,3 +63,5 @@ function displayTasks(){
     document.getElementById("todo-count").textContent = tasks.length;
 }
 
+//add a button event 
+addButton.addEventListener("click",addTask);
