@@ -133,3 +133,19 @@ button:disabled{
 .doing-now .task-title {
     color: black;
 }
+/* Task Timer */
+.focus-timer {
+   text-align: center;
+}
+#timer-display {
+    font-size: 40px;
+    font-weight: bold;
+    color: #8b5ac0;
+    margin: 20px;
+}
+#doing-task-name{
+    color: #76518e;
+}
+.timer-buttons{
+    margin-top: 15px;
+}
