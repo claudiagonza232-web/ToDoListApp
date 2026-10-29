@@ -108,3 +108,15 @@ button:disabled{
     border-radius: 8px;
     border: 1px solid #e8d5fa;
 }
+/* Priority Labels */
+.high{
+    color: #d9534f
+}
+
+.medium {
+    color: #faea33;
+}
+
+.low {
+    color: #6b7280;
+}
