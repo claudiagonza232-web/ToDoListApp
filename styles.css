@@ -170,7 +170,28 @@ button:disabled{
     color: grey;
 }
 
+.task-info{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
 
+.task-info .task-title{
+    flex: none;
+}
+
+.task-info span{
+    display: block;
+}
+.task-info .high{
+    color: #d9534f;
+}
+.task-info .medium {
+    color: #c78a16;
+}
+.task-info .low {
+    color: #6b7280;
+}
 
 /* Mobile friendly */
 @media (max-width: 600px) {
