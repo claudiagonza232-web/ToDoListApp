@@ -8,7 +8,7 @@ const taskList = document.getElementById("task-list");
 const taskError = document.getElementById("task-error");
 
 // Store tasks
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 // Add a new task
 function addTask() {
@@ -33,6 +33,7 @@ const task = {
 };
 
 tasks.push(task);
+localStorage.setItem("tasks", JSON.stringify(tasks));
 displayTasks();
 
 // Clear input 
@@ -65,3 +66,6 @@ function displayTasks(){
 
 //add a button event 
 addTaskButton.addEventListener("click",addTask);
+
+//Displays saved tasks on page load
+displayTasks();
