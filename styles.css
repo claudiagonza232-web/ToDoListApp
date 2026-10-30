@@ -149,6 +149,29 @@ button:disabled{
 .timer-buttons{
     margin-top: 15px;
 }
+
+/* Task checkbox and spacing */ 
+.task-item{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.task-title{
+    flex: 1;
+}
+
+.completed{
+    background-color: #f0f0f0;
+} 
+
+.completed .task-title{
+    text-decoration: line-through;
+    color: grey;
+}
+
+
+
 /* Mobile friendly */
 @media (max-width: 600px) {
     main{
