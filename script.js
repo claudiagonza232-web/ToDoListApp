@@ -152,9 +152,16 @@ function displayTasks(){
         deleteTask(task.id);
     });
 
+    const taskInfo = document.createElement("div");
+    taskInfo.className = "task-info";
+
+    priority.textContent = task.priority + " priority";
+
+     taskInfo.appendChild(title);
+     taskInfo.appendChild(priority);
+
     taskDiv.appendChild(checkbox);
-    taskDiv.appendChild(title);
-    taskDiv.appendChild(priority);
+    taskDiv.appendChild(taskInfo);
     taskDiv.appendChild(editButton);
     taskDiv.appendChild(deleteButton);
 
