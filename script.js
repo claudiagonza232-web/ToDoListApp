@@ -92,6 +92,25 @@ function deleteTask(taskId) {
     displayTasks();
 }
 
+//changes task priority 
+function changePriority(taskId, newPriority) {
+    const task = tasks.find(task => task.id === taskId);
+
+    if(!task || task.priority === newPriority) {
+        return;
+    }
+
+    task.priority = newPriority;
+
+   //move active tasks to the end of its new priority group
+   if(!task.completed) {
+       tasks = tasks.filter(item => item.id !== taskId);
+       tasks.push(task);
+   }
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  displayTasks();
+}
+
 // Display tasks
 function displayTasks(){
     taskList.innerHTML = "";
@@ -135,6 +154,19 @@ function displayTasks(){
     const priority = document.createElement("span");
     priority.className = task.priority;
     priority.textContent = task.priority;
+    
+    //Priority change dropdown
+    const prioritySelect = document.createElement("select");
+    ["high", "medium", "low"].forEach(level => {
+        const option = document.createElement("option");
+        option.value = level;
+        option.textContent = level.charAt(0).toUpperCase() + level.slice(1);
+        prioritySelect.appendChild(option);
+    });
+    prioritySelect.value = task.priority;
+    prioritySelect.addEventListener("change", () => {
+        changePriority(task.id, prioritySelect.value);
+    });
 
     //Edit Button 
     const editButton = document.createElement("button");
@@ -162,6 +194,7 @@ function displayTasks(){
 
     taskDiv.appendChild(checkbox);
     taskDiv.appendChild(taskInfo);
+    taskDiv.appendChild(prioritySelect);
     taskDiv.appendChild(editButton);
     taskDiv.appendChild(deleteButton);
 
