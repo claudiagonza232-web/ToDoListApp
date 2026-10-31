@@ -136,6 +136,9 @@ function selectDoingNow(taskId) {
     //start only when task is selected 
     document.getElementById("start-timer").disabled = doingNowId === null;
     displayTasks();
+
+    document.getElementById("doing-count").textContent =
+    doingNowId === null ? 0 : 1;
 }
     
 
