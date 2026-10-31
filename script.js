@@ -9,6 +9,8 @@ const taskError = document.getElementById("task-error");
 
 // Store tasks
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+// select task 
+let doingNowId = null;
 
 // Add a new task
 function addTask() {
@@ -46,6 +48,11 @@ function toggleComplete(taskId) {
     const task = tasks.find(task => task.id === taskId);
     
     if (task) {
+
+        if(doingNowId === taskId) {
+            selectDoingNow(taskId);
+        }
+
         task.completed = !task.completed;
 
         tasks = tasks.filter(item => item.id !== taskId);
@@ -111,6 +118,27 @@ function changePriority(taskId, newPriority) {
   displayTasks();
 }
 
+// Select the current task being focused on
+function selectDoingNow(taskId) {
+    const task = tasks.find(task => task.id === taskId);
+    if(!task || task.completed) {
+        return;
+    }
+
+    //clicking the same task again clears it 
+
+    doingNowId = doingNowId === taskId ? null : taskId;
+
+    //to update current task 
+    document.getElementById("doing-task-name").textContent = 
+    doingNowId === null ? "Current Task: None" : "Current Task: " + task.title;
+
+    //start only when task is selected 
+    document.getElementById("start-timer").disabled = doingNowId === null;
+    displayTasks();
+}
+    
+
 // Display tasks
 function displayTasks(){
     taskList.innerHTML = "";
@@ -135,6 +163,10 @@ function displayTasks(){
         const taskDiv = document.createElement("div");
 
         taskDiv.className = "task-item";
+
+        if(doingNowId === task.id) {
+            taskDiv.classList.add("doing-now");
+        }
 
         if(task.completed) {
             taskDiv.classList.add("completed");
@@ -167,6 +199,17 @@ function displayTasks(){
     prioritySelect.addEventListener("change", () => {
         changePriority(task.id, prioritySelect.value);
     });
+    // Doing now button
+    const doingButton = document.createElement("button");
+    
+    doingButton.textContent = doingNowId === task.id ? "Clear" : "Doing Now";
+    doingButton.disabled = task.completed;
+
+    doingButton.addEventListener("click", () => {
+        selectDoingNow(task.id);
+    });
+
+    taskDiv.appendChild(doingButton);
 
     //Edit Button 
     const editButton = document.createElement("button");
@@ -195,6 +238,7 @@ function displayTasks(){
     taskDiv.appendChild(checkbox);
     taskDiv.appendChild(taskInfo);
     taskDiv.appendChild(prioritySelect);
+    taskDiv.appendChild(doingButton);
     taskDiv.appendChild(editButton);
     taskDiv.appendChild(deleteButton);
 
