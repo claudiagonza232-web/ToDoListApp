@@ -52,13 +52,22 @@
     </section> 
   
 <div class="workspace">
+    
 <!-- Task Board --> 
 <section class="task-board">
+<div class="task-header">
 <h2>My tasks 🗂️</h2>
-<div id="task-list" class="task-list">
-    <!-- Tasks will be added here using javascript -->
+
+<select id="priority-filter">
+    <option value="all">All</option>
+    <option value="high">High</option>
+    <option value="medium">Medium</option>
+    <option value="low">Low</option>
+</select>
 </div>
 
+<div id="task-list" class="task-list">
+</div>
 </section>
 
 <!-- Focus Timer -->
