@@ -295,5 +295,12 @@ button:disabled{
         box-sizing: border-box;
     }
 }
+@media (max-width: 600px) {
+    .task-item button {
+        flex: 1 1 30%;
+        min-width: 100px;
+        white-space: normal;
+    }
+}
 
     
