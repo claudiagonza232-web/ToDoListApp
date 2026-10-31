@@ -10,7 +10,16 @@ const taskError = document.getElementById("task-error");
 // Store tasks
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 // select task 
-let doingNowId = null;
+let doingNowId = null; 
+
+// Focus timer functionality
+const timerDuration = document.getElementById("timer-duration"); 
+const timerDisplay = document.getElementById("timer-display");
+const startButton = document.getElementById("start-timer");
+const pauseButton = document.getElementById("pause-timer");
+const resetButton = document.getElementById("reset-timer");
+let timeLeft = 30 * 60;
+let timerInterval = null;
 
 // Add a new task
 function addTask() {
@@ -93,6 +102,10 @@ function deleteTask(taskId) {
     if(!confirmDelete){
         return;
     }
+    //clear doing now if the task was deleted
+    if(doingNowId === taskId) {
+        selectDoingNow(taskId);
+    }
     tasks = tasks.filter(task => task.id !== taskId);
     
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -128,6 +141,8 @@ function selectDoingNow(taskId) {
     //clicking the same task again clears it 
 
     doingNowId = doingNowId === taskId ? null : taskId;
+    //reset when clearing a task 
+    resetTimer();
 
     //to update current task 
     document.getElementById("doing-task-name").textContent = 
@@ -140,7 +155,67 @@ function selectDoingNow(taskId) {
     document.getElementById("doing-count").textContent =
     doingNowId === null ? 0 : 1;
 }
+//timer display 
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
     
+    timerDisplay.textContent = 
+    String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
+}
+//Reset Timer
+function resetTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    timeLeft = Number(timerDuration.value) * 60;
+    updateTimerDisplay();
+    startButton.disabled = doingNowId === null;
+    pauseButton.disabled = true;
+    timerDuration.disabled = false;
+}
+//Start the timer
+function startTimer() {
+    if(doingNowId === null || timerInterval !== null){
+        return;
+    } 
+    startButton.disabled = true;
+    pauseButton.disabled = false;
+    timerDuration.disabled = true;
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        if(timeLeft <= 0) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            startButton.disabled = true;
+            pauseButton.disabled = true;
+            const finished = confirm("Did you finish this task?");
+
+            if (finished) {
+                toggleComplete(doingNowId);
+            } else {
+                resetTimer();
+            }
+        }
+    }, 1000);
+}
+
+    // Pause Timer
+function pauseTimer(){
+    clearInterval(timerInterval);
+    timerInterval = null;
+    startButton.disabled = doingNowId === null; 
+    pauseButton.disabled = true;
+}
+
+// this changes timer duration
+timerDuration.addEventListener("change", resetTimer);
+
+//Timer Buttons
+startButton.addEventListener("click", startTimer);
+pauseButton.addEventListener("click", pauseTimer);
+resetButton.addEventListener("click", resetTimer);
 
 // Display tasks
 function displayTasks(){
@@ -211,8 +286,6 @@ function displayTasks(){
     doingButton.addEventListener("click", () => {
         selectDoingNow(task.id);
     });
-
-    taskDiv.appendChild(doingButton);
 
     //Edit Button 
     const editButton = document.createElement("button");
