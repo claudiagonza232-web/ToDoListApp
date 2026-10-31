@@ -74,26 +74,70 @@ function toggleComplete(taskId) {
     }
 }
 
+
 function editTask(taskId) {
     const task = tasks.find(task => task.id === taskId);
+    if (!task) return;
 
-    if(!task) {
-        return;
-    }
-    const newTitle = prompt("Edit task title:", task.title);
+    // Find the correct task using its ID
+    const taskDiv = [...taskList.children].find(div =>
+        div.dataset.id === String(taskId)
+    );
 
-    if(newTitle === null){
-        return;
-    }
-    if (newTitle.trim() === "") {
-        alert("Task title cannot be empty.");
-        return;
-    }
+    if (!taskDiv) return;
 
-    task.title = newTitle.trim();
+    const title = taskDiv.querySelector(".task-title");
 
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-    displayTasks();
+    // Prevent opening multiple edit boxes
+    if (!title) return;
+
+    // Create text box
+    const editInput = document.createElement("input");
+    editInput.type = "text";
+    editInput.value = task.title;
+
+    // Create Save button
+    const saveButton = document.createElement("button");
+    saveButton.textContent = "Save";
+
+    // Create Cancel button
+    const cancelButton = document.createElement("button");
+    cancelButton.textContent = "Cancel";
+
+    // Replace title with input
+    title.replaceWith(editInput);
+
+    // Add buttons inside the task
+    taskDiv.appendChild(saveButton);
+    taskDiv.appendChild(cancelButton);
+
+    // Save changes
+    saveButton.addEventListener("click", () => {
+        const newTitle = editInput.value.trim();
+
+        if (newTitle === "") {
+            alert("Task title cannot be empty.");
+            return;
+        }
+
+        task.title = newTitle;
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+
+        // Update Focus Timer task name
+        if (doingNowId === taskId) {
+            document.getElementById("doing-task-name").textContent =
+                "Current Task: " + task.title;
+        }
+
+        displayTasks();
+    });
+
+    // Cancel editing
+    cancelButton.addEventListener("click", () => {
+        displayTasks();
+    });
+
+    editInput.focus();
 }
 
 //Delete a task
@@ -181,26 +225,35 @@ function startTimer() {
     startButton.disabled = true;
     pauseButton.disabled = false;
     timerDuration.disabled = true;
+    
 
     timerInterval = setInterval(() => {
         timeLeft--;
         updateTimerDisplay();
+
         if(timeLeft <= 0) {
+            timeLeft = 0;
+            updateTimerDisplay();
+
             clearInterval(timerInterval);
             timerInterval = null;
+           
             startButton.disabled = true;
             pauseButton.disabled = true;
+
+        setTimeout(() => {
             const finished = confirm("Did you finish this task?");
 
             if (finished) {
                 toggleComplete(doingNowId);
             } else {
                 resetTimer();
-            }
+      }
+            }, 100);
         }
     }, 1000);
-}
-
+}       
+    
     // Pause Timer
 function pauseTimer(){
     clearInterval(timerInterval);
@@ -239,7 +292,7 @@ function displayTasks(){
 
     sortedTasks.forEach(task => {
         const taskDiv = document.createElement("div");
-
+        taskDiv.dataset.id = task.id;
         taskDiv.className = "task-item";
 
         if(doingNowId === task.id) {
