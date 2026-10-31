@@ -5,6 +5,7 @@ const taskInput = document.getElementById("new-task");
 const priorityInput = document.getElementById("task-priority");
 const addTaskButton = document.getElementById("add-task");
 const taskList = document.getElementById("task-list");
+const priorityFilter = document.getElementById("priority-filter");
 const taskError = document.getElementById("task-error");
 
 // Store tasks
@@ -290,7 +291,10 @@ function displayTasks(){
     return priorityOrder[a.priority] - priorityOrder[b.priority];
     });
 
-    sortedTasks.forEach(task => {
+       sortedTasks
+    .filter(task => priorityFilter.value === "all" ||
+                    task.priority === priorityFilter.value)
+    .forEach(task => {
         const taskDiv = document.createElement("div");
         taskDiv.dataset.id = task.id;
         taskDiv.className = "task-item";
@@ -385,6 +389,9 @@ const activeTasks = tasks.filter(task => !task.completed);
 
 //add a button event 
 addTaskButton.addEventListener("click",addTask);
+
+//update tasks when filter changes 
+priorityFilter.addEventListener("change", displayTasks);
 
 //Displays saved tasks on page load
 displayTasks();
