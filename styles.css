@@ -217,6 +217,27 @@ button:disabled{
     padding: 7px 9px;
 }
 
+/* My Tasks heading and filter */
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.task-header h2 {
+    margin: 0;
+}
+
+#priority-filter {
+    padding: 8px;
+    border: 1px solid #d8baf2;
+    border-radius: 8px;
+    background-color: #f8f2ff;
+    color: #63358a;
+}
+
 /* Mobile friendly */
 @media (max-width: 600px) {
     main{
@@ -227,6 +248,28 @@ button:disabled{
     }
     .add-task input{
         width: 100%;
+    }
+    .task-item{
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 12px;
+    }
+    .task-info{
+        flex: 1;
+        min-width: 70%;
+    }
+    .task-item select{
+        width: 100%;
+    }
+    .task-item button{
+        flex: 1;
+        min-width: 0;
+        padding: 10px 5px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+    .task-header{
+        flex-wrap: wrap;
     }
 }
 @media (max-width: 800px) { 
