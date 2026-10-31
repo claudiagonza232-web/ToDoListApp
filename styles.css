@@ -192,6 +192,17 @@ button:disabled{
 .task-info .low {
     color: #6b7280;
 }
+.workspace{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+.workspace section{
+    min-width: 0;
+}
+.task-item{
+    flex-wrap: wrap;
+}
 
 /* Mobile friendly */
 @media (max-width: 600px) {
@@ -205,3 +216,9 @@ button:disabled{
         width: 100%;
     }
 }
+@media (max-width: 800px) { 
+    .workspace{
+        grid-template-columns: 1fr;
+    }
+}
+    
