@@ -204,6 +204,19 @@ button:disabled{
     flex-wrap: wrap;
 }
 
+/* Doing now tasks */
+.doing-now{
+    background-color: #eee0ff;
+    border: 2px solid #8b5ac0;
+}
+.doing-now .task-title {
+    color: black;
+}   
+.task-item button{
+    font-size: 12px;
+    padding: 7px 9px;
+}
+
 /* Mobile friendly */
 @media (max-width: 600px) {
     main{
