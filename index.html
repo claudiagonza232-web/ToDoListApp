@@ -9,8 +9,8 @@
 </head>
 <body>
 <header>
-    <h1>My To-Do List 💜</h1>
-    <p>Keep track of your tasks and stay organized!</p>
+    <h1>Get Things Done, Today! 💜</h1>
+    <p>Keep track of your tasks, stay organized, and beproductive!</p>
 </header>
 <main>
 
@@ -23,7 +23,7 @@
             <option value="medium">Medium</option>
             <option value="high">High</option>
         </select>
-        <button id="add-task">Add</button>   
+        <button type="button" id="add-task">Add</button>   
 
         <!-- Error message for task input -->
         <p id="task-error" role="alert"></p>
@@ -50,17 +50,9 @@
         </div>
         </div>
     </section> 
-
-    <!-- Filter Tasks -->
-    <section class="filter-tasks">
-        <h2>Filter by Priority</h2>
-    <button type="button" data-filter="all">All</button>
-    <button type="button" data-filter="low">Low</button>
-    <button type="button" data-filter="medium">Medium</button>
-    <button type="button" data-filter="high">High</button>
-    </section>
   
-<!-- Task Board -->
+<div class="workspace">
+<!-- Task Board --> 
 <section class="task-board">
 <h2>My tasks 🗂️</h2>
 <div id="task-list" class="task-list">
@@ -96,6 +88,8 @@
      <button type="button" id="reset-timer">Reset</button>
      </div>
 </section>
+</div> 
+
 </main>
 </body>
 </html>
